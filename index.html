@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+	<title>sirens</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+
+	<script src="js/libs/jquery-2.0.3.min.js"></script>
+	<script src="js/libs/d3.v2.min.js"></script>
+	<script src="js/libs/jquery-ui.min.js"></script>
+	<script src="js/libs/jquery.scrollTo.min.js"></script>
+	<script src="js/libs/jquery.easing.1.3.js"></script>
+</head>
+<body>
+ 	<div class="top">
+		<div id="topnav"></div>
+		<div id="topbord"></div>
+		<div id="subnav">
+			<div class="arrow bg decoy" id="beginsub"></div>
+			<div class="arrow decoy" id="larrsub"></div>
+			<div class="arrow decoy" id="rarrsub"></div>
+			<div class="arrow bg decoy" id="endsub"></div>
+			<div class="arrow bg" id="begin"></div>
+			<div class="arrow" id="larr"></div>
+			<div class="arrow" id="rarr"></div>
+			<div class="arrow bg" id="end"></div>
+			<div id="ticker"></div>
+		</div>
+	</div>
+	<div id="viewbox">
+		<div class="col main">
+			<svg class="vis">
+				<defs>
+				  <pattern id="letters" x="0" y="0" width='2' height='2' patternUnits="userSpaceOnUse" >
+				  	<rect x='0' y='0' width='1' height='1' fill='#1d1d1d'/>
+				  	<rect x='0' y='1' width='1' height='1' fill='#181818'/>
+				  	<rect x='1' y='1' width='1' height='1' fill='#1d1d1d'/>
+				  	<rect x='1' y='0' width='1' height='1' fill='#131313'/>
+				  </pattern>
+				  <pattern id="letters_neut" x="0" y="0" width='2' height='2' patternUnits="userSpaceOnUse" >
+				  	<rect x='0' y='0' width='1' height='1' fill='#eee'/>
+				  	<rect x='0' y='1' width='1' height='1' fill='#999'/>
+				  	<rect x='1' y='1' width='1' height='1' fill='#eee'/>
+				  	<rect x='1' y='0' width='1' height='1' fill='#999'/>
+				  </pattern>
+
+				  <pattern id="tier_2" x="0" y="0" width='2' height='4' viewBox='0 0 5 10' patternUnits="userSpaceOnUse" >
+				  	<rect width='110%' x='-5%' y='-5%' height='110%' fill='#ffffff'/>
+					<line x1='-2' y1='1' x2='7' y2='10' stroke='#1d1d1d' stroke-width='2'/>
+					<line x1='-2' y1='6' x2='7' y2='15' stroke='#1d1d1d' stroke-width='2'/>
+					<line x1='-2' y1='-4' x2='7' y2='5' stroke='#1d1d1d' stroke-width='2'/>
+				  </pattern>
+				  <pattern id="tier_3" x="0" y="0" width="2" height="4" viewBox='0 0 5 10' patternUnits="userSpaceOnUse" >
+				  	<rect width='110%' x='-5%' y='-5%' height='110%' fill='#ffffff'/>
+					<line x1='-2' y1='1' x2='7' y2='10' stroke='#1d1d1d' stroke-width='1'/>
+					<line x1='-2' y1='6' x2='7' y2='15' stroke='#1d1d1d' stroke-width='1'/>
+					<line x1='-2' y1='-4' x2='7' y2='5' stroke='#1d1d1d' stroke-width='1'/>
+				  </pattern>
+
+				  <pattern id="tier_2c1" x="0" y="0" width='2' height='4' viewBox='0 0 5 10' patternUnits="userSpaceOnUse" >
+				  	<rect width='110%' x='-5%' y='-5%' height='110%' fill='#ffffff'/>
+					<line x1='-2' y1='1' x2='7' y2='10' stroke='#e5005e' stroke-width='2'/>
+					<line x1='-2' y1='6' x2='7' y2='15' stroke='#e5005e' stroke-width='2'/>
+					<line x1='-2' y1='-4' x2='7' y2='5' stroke='#e5005e' stroke-width='2'/>
+				  </pattern>
+				  <pattern id="tier_3c1" x="0" y="0" width="2" height="4" viewBox='0 0 5 10' patternUnits="userSpaceOnUse" >
+				  	<rect width='110%' x='-5%' y='-5%' height='110%' fill='#ffffff'/>
+					<line x1='-2' y1='1' x2='7' y2='10' stroke='#e5005e' stroke-width='1'/>
+					<line x1='-2' y1='6' x2='7' y2='15' stroke='#e5005e' stroke-width='1'/>
+					<line x1='-2' y1='-4' x2='7' y2='5' stroke='#e5005e' stroke-width='1'/>
+
+				  <pattern id="tier_2c2" x="0" y="0" width='2' height='4' viewBox='0 0 5 10' patternUnits="userSpaceOnUse" >
+				  	<rect width='110%' x='-5%' y='-5%' height='110%' fill='#ffffff'/>
+					<line x1='-2' y1='1' x2='7' y2='10' stroke='#007cc1' stroke-width='2'/>
+					<line x1='-2' y1='6' x2='7' y2='15' stroke='#007cc1' stroke-width='2'/>
+					<line x1='-2' y1='-4' x2='7' y2='5' stroke='#007cc1' stroke-width='2'/>
+				  </pattern>
+				  <pattern id="tier_3c2" x="0" y="0" width="2" height="4" viewBox='0 0 5 10' patternUnits="userSpaceOnUse" >
+				  	<rect width='110%' x='-5%' y='-5%' height='110%' fill='#ffffff'/>
+					<line x1='-2' y1='1' x2='7' y2='10' stroke='#007cc1' stroke-width='1'/>
+					<line x1='-2' y1='6' x2='7' y2='15' stroke='#007cc1' stroke-width='1'/>
+					<line x1='-2' y1='-4' x2='7' y2='5' stroke='#007cc1' stroke-width='1'/>
+				  </pattern>
+
+				  <pattern id="tier_2over" x="0" y="0" width='2' height='4' viewBox='0 0 5 10' patternUnits="userSpaceOnUse" >
+				  	<rect width='110%' x='-5%' y='-5%' height='110%' fill='#ffffff'/>
+					<line x1='-2' y1='1' x2='7' y2='10' stroke='#acb200' stroke-width='2'/>
+					<line x1='-2' y1='6' x2='7' y2='15' stroke='#acb200' stroke-width='2'/>
+					<line x1='-2' y1='-4' x2='7' y2='5' stroke='#acb200' stroke-width='2'/>
+				  </pattern>
+				  <pattern id="tier_3over" x="0" y="0" width="2" height="4" viewBox='0 0 5 10' patternUnits="userSpaceOnUse" >
+				  	<rect width='110%' x='-5%' y='-5%' height='110%' fill='#ffffff'/>
+					<line x1='-2' y1='1' x2='7' y2='10' stroke='#cad000' stroke-width='2'/>
+					<line x1='-2' y1='6' x2='7' y2='15' stroke='#cad000' stroke-width='2'/>
+					<line x1='-2' y1='-4' x2='7' y2='5' stroke='#cad000' stroke-width='2'/>
+				  </pattern>
+				</defs>
+			</svg>
+		</div>
+	</div>
+	<div class="base">
+		<div class="zoom" id="zoom_01">
+			<div class="inner"></div>
+		</div>
+		<div class="zoom" id="zoom_02">
+			<div class="inner"></div>
+			<div class="inner"></div>
+			<div class="inner"></div>
+			<div class="inner"></div>
+		</div>
+		<div class="zoom" id="zoom_03">
+			<div class="inner"></div>
+			<div class="inner"></div>
+			<div class="inner"></div>
+			<div class="inner"></div>
+			<div class="inner"></div>
+			<div class="inner"></div>
+			<div class="inner"></div>
+			<div class="inner"></div>
+			<div class="inner"></div>
+			<div class="inner"></div>
+			<div class="inner"></div>
+			<div class="inner"></div>
+			<div class="inner"></div>
+			<div class="inner"></div>
+			<div class="inner"></div>
+			<div class="inner"></div>
+		</div>
+		<span class="sub linkme"><a href="http://y-li.me/projects/201406-joyce-ulysses-sirens-redux.php" target="_blank">About</a></span>
+		<div id="q"><a href="http://y-li.me/projects/201406-joyce-ulysses-sirens-redux.php" target="_blank">?</a></div>
+		<span class="sub title"><a href="http://y-li.me/projects/201406-joyce-ulysses-sirens-redux.php" target="_blank"><i>Ulysses</i>: "Sirens" as a Graphic Score</a></span>
+	</div>
+	<div class="legend">
+		<span class="tier_1">Tier 1</span>
+		<span class="tier_2">Tier 2</span>
+		<span class="tier_3">Tier 3</span>
+		<span class="trans">Link</span>
+		<div class="legendrect tier_1"></div>
+		<div class="legendrect tier_2"></div>
+		<div class="legendrect tier_3"></div>
+		<div class="legendrect trans"></div>
+	</div>
+	<div id="pending"><div class="spinner"></div>calculating...</div>
+	<div id="sorry">This visualization is not supported by your screen resolution. :(<br/><br/>Check it out <a href="http://y-li.me/projects/201406-joyce-ulysses-sirens-redux.php">here</a> instead.</div>
+
+	<script type="text/javascript" src="js/joyce.js"></script>
+</body>
+</html>
