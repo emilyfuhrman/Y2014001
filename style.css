@@ -285,7 +285,7 @@ body {
 
 .baseTextMain span {
 	height:12px;
-	padding:6px 0;
+	padding:9px 0 6px;
 }
 
 .sub {
@@ -534,6 +534,7 @@ body {
 
 .hlbase {
 	background-image:url('imgs/bknd.png');
+	background-size:2px 2px;
 }
 
 .zoom {
