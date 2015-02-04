@@ -327,7 +327,7 @@ body {
 	position:absolute;
 	left:75px;
 	text-align:left;
-	border-top:1px dotted #1d1d1d;
+	border-top:1px solid #1d1d1d;
 	cursor:pointer;
 }
 .title:hover {
