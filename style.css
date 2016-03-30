@@ -636,6 +636,7 @@ body {
 	text-align:left;
 	z-index:999999;
 	pointer-events:all;
+	opacity:0;
 	}
 #sorry span {
 	float:left;
