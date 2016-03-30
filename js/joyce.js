@@ -46,6 +46,8 @@ vis.charmap	= {
 	};
 
 vis.sorry = function(){
+	d3.select("#viewbox")
+		.style("display","none");
 	d3.select("#sorry")
 		.style("display","block")
 		.transition()
@@ -62,6 +64,8 @@ vis.calc = function(pend){
 		d3.select("#pending")
 			.style("display","block")
 			.style("opacity",1);
+		d3.select("#viewbox")
+			.style("display","block");
 	}
 	vis.w = window.innerWidth;
 	vis.h = window.innerHeight;

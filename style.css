@@ -610,9 +610,8 @@ body {
 	color:#b6bc00;
 }
 
-#pending,
-#sorry {
-	position:absolute;
+#pending {
+	position:fixed;
 	width:100%;
 	height:100%;
 	top:0;
@@ -623,12 +622,25 @@ body {
 	text-align:left;
 	padding:24px;
 	z-index:999999;
-	pointer-events:all;
-}
-
+	pointer-events:none;
+	}
 #sorry {
-	opacity:0;
-}
+	position:absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	color:#1d1d1d;
+	background:#fff;
+	font-size:16px;
+	text-align:left;
+	z-index:999999;
+	pointer-events:all;
+	}
+#sorry span {
+	float:left;
+	padding:24px;
+	}
 
 #pending {
 	opacity:1;
