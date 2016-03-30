@@ -370,13 +370,13 @@ body {
 	font-size:34px;
 	font-weight:bold;
 	text-anchor:middle;
-	fill: url(/x/sirens/#letters_neut);
+	fill: url(/interactive/Y2014001/#letters_neut);
 	stroke:none;
 }
 
 .linebarG.increment:hover .linenum,
 .linebarG.increment.highlight .linenum {
-	fill: url(/x/sirens/#letters);
+	fill: url(/interactive/Y2014001/#letters);
 }
 
 .charcol {
@@ -414,10 +414,10 @@ body {
 	fill: #1d1d1d;
 }
 .marker.tier_2 {
-	fill: url(/x/sirens/#tier_2);
+	fill: url(/interactive/Y2014001/#tier_2);
 }
 .marker.tier_3 {
-	fill: url(/x/sirens/#tier_3);
+	fill: url(/interactive/Y2014001/#tier_3);
 }
 
 .marker.trans.tier_2 {
@@ -439,30 +439,30 @@ body {
 	fill: #e5005e;
 }
 .marker.tier_2.c1 {
-	fill: url(/x/sirens/#tier_2c1);
+	fill: url(/interactive/Y2014001/#tier_2c1);
 }
 .marker.tier_3.c1 {
-	fill: url(/x/sirens/#tier_3c1);
+	fill: url(/interactive/Y2014001/#tier_3c1);
 }
 
 .marker.tier_1.c2 {
 	fill: #007cc1;
 }
 .marker.tier_2.c2 {
-	fill: url(/x/sirens/#tier_2c2);
+	fill: url(/interactive/Y2014001/#tier_2c2);
 }
 .marker.tier_3.c2 {
-	fill: url(/x/sirens/#tier_3c2);
+	fill: url(/interactive/Y2014001/#tier_3c2);
 }
 
 .marker.tier_1.over {
 	fill: #b6bc00;
 }
 .marker.tier_2.over {
-	fill: url(/x/sirens/#tier_2over);
+	fill: url(/interactive/Y2014001/#tier_2over);
 }
 .marker.tier_3.over {
-	fill: url(/x/sirens/#tier_3over);
+	fill: url(/interactive/Y2014001/#tier_3over);
 }
 
 .legend {
