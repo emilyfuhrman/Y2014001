@@ -47,7 +47,7 @@ vis.charmap	= {
 
 vis.sorry = function(){
 	d3.select("#viewbox")
-		.style("display","none");
+		.style("width","none");
 	d3.select("#sorry")
 		.style("display","block")
 		.transition()
@@ -965,7 +965,10 @@ $(window).resize(function(){
 		.style("display","block")
 		.style("opacity",1);
 	if(vis.checkScreen()){
-		vis.update();
+		vis.calc(true);
+		vis.setup();
+		vis.gettxtdata(vis.getvisdata);
+		vis.sizecols();
 	} else{
 		vis.sorry();
 	}
